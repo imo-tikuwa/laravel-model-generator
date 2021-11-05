@@ -1,6 +1,6 @@
 <?php
 
-namespace UcanLab\LaravelHelloWorld\Providers;
+namespace ImoTikuwa\ModelGenerator\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use ImoTikuwa\ModelGenerator\Console\Commands\SampleCommand;
