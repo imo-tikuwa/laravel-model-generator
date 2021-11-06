@@ -3,7 +3,7 @@
 namespace ImoTikuwa\ModelGenerator\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use ImoTikuwa\ModelGenerator\Console\Commands\SampleCommand;
+use ImoTikuwa\ModelGenerator\Console\Commands\{InfoCommand, ModelCommand};
 
 class ConsoleServiceProvider extends ServiceProvider
 {
@@ -14,9 +14,16 @@ class ConsoleServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (!defined('DS')) {
+            define('DS', DIRECTORY_SEPARATOR);
+        }
+
+        $this->loadViewsFrom(dirname(__DIR__, 2) . DS . 'resources' . DS . 'views', 'tikuwa');
+
         if ($this->app->runningInConsole()) {
             $this->commands([
-                SampleCommand::class,
+                ModelCommand::class,
+                InfoCommand::class,
             ]);
         }
     }
